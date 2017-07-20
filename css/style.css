@@ -1,0 +1,13 @@
+form{
+	margin: 10px;
+}
+
+.btn{
+	background-color: teal;
+	color: black;
+	margin: 10px;
+}
+
+#gifContainer{
+	display: inline-flex;
+}
