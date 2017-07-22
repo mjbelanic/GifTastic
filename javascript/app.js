@@ -1,26 +1,29 @@
 // apiKey = 48cbb4ead8b74091a7a17abba5a3bfc8
-var btnArray = ["Uncharted" , "Mario Kart"];
+var topics = ["The Office" , "Firefly" , "Silicon Valley" , "The Simpsons" , "Futurama", "That 70's Show" ,
+				"Attack on Titan" , "Sword Art Online" , "My Hero Academia" , "Slo Mo Guys" , "MythBusters" ,
+				"The Daily Show"] ;
 $(document).ready(function(){
 	//make api call
 	function gifphyCall(value){
 		$("#gifContainer").empty()
 		var apiKey = "48cbb4ead8b74091a7a17abba5a3bfc8"
-		var queryUrl = "http://api.giphy.com/v1/gifs/search?q="+value+"&api_key="+apiKey+"&limit=25"; 
+		var queryUrl = "http://api.giphy.com/v1/gifs/search?q="+value+"&api_key="+apiKey+"&limit=12"; 
 		$.ajax({
 			url: queryUrl,
 			method: "GET"
 		}).done(function(response){
-			console.log(response);
 			for(var i = 0; i < response.data.length; i++){
 				var gifDiv = $("<div>");
 				var image = $("<img>");
 				var rating = $("<h1>");
-				rating.html("Rating: " + response.data[i].rating);
-				image.attr("src", response.data[i].images.fixed_height_still.url);  //fixed_width.
-				image.attr("data-state" , "still")
-				image.attr("data-animate" ,response.data[i].images.fixed_height.url);
-				image.attr("data-still" , response.data[i].images.fixed_height_still.url);
-				image.addClass("gifImg");
+				rating.html("Rating: " + response.data[i].rating.toUpperCase());
+				image.attr("src", response.data[i].images.original_still.url);
+				image.attr("data-state" , "still");
+				image.attr("data-animate" ,response.data[i].images.original.url);
+				image.attr("data-still" , response.data[i].images.original_still.url);
+				image.height(200);
+				gifDiv.addClass("col-sm-3 gifImages");
+				image.addClass("gifImg img-responsive");
 				gifDiv.append(rating);
 				gifDiv.append(image);
 				$("#gifContainer").append(gifDiv);
@@ -46,11 +49,11 @@ $(document).ready(function(){
 	function RenderBtns(){
 		$("#btnList").empty();
 
-		for (var i = btnArray.length - 1; i >= 0; i--) {
+		for (var i = 0; i < topics.length; i++) {
 			var btn = $("<button>");
-			btn.attr("data-value" , btnArray[i]);
+			btn.attr("data-value" , topics[i]);
 			btn.addClass("btn btn-lg")
-			btn.html(btnArray[i]);
+			btn.html(topics[i]);
 			$("#btnList").append(btn);
 		}
 	}
@@ -71,13 +74,13 @@ $(document).ready(function(){
 		if(inputVal.length < 1){
 			// error with hidden label
 		}else{
-			btnArray.push(inputVal);
+			topics.push(inputVal);
 			RenderBtns();
 			// add button
 		}
 		$("#gifInput").val("");
 	});
 
-	RenderBtns(btnArray);
+	RenderBtns(topics);
 
 })

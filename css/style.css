@@ -1,5 +1,22 @@
-form{
+h1{
+	text-align: center;
+}
+
+#inputForm{
+	background-color: teal;
+	color: black;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+label, input{
 	margin: 10px;
+}
+
+
+
+body{
+	background-image: url("../images/extra_clean_paper.png");
 }
 
 .btn{
@@ -8,6 +25,17 @@ form{
 	margin: 10px;
 }
 
-#gifContainer{
-	display: inline-flex;
+.gifImages{
+	background-color: black;
+	border: 1px solid white;
+}
+
+div h1{
+	background-color: teal;
+	color: black;
+	width: 100%;
+}
+
+div img{
+	margin: 10px auto;
 }
