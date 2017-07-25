@@ -7,7 +7,7 @@ $(document).ready(function(){
 	function gifphyCall(value){
 		$("#gifContainer").empty()
 		var apiKey = "48cbb4ead8b74091a7a17abba5a3bfc8"
-		var queryUrl = "http://api.giphy.com/v1/gifs/search?q="+value+"&api_key="+apiKey+"&limit=12"; 
+		var queryUrl = "https://api.giphy.com/v1/gifs/search?q="+value+"&api_key="+apiKey+"&limit=12"; 
 		$.ajax({
 			url: queryUrl,
 			method: "GET"
